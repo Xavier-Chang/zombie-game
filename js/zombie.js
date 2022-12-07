@@ -1,6 +1,6 @@
 export default class Zombie {
     constructor() {
-        this.width = 20;
+        this.width = 4;
         this.height = 10;
         
         this.randomPosition();
