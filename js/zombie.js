@@ -1,7 +1,7 @@
 export default class Zombie {
     constructor() {
-        this.width = 4;
-        this.height = 10;
+        this.width = 12;
+        this.height = 18;
         
         this.randomPosition();
         //put it above the method or constructor will excute firstly and no domElement.

@@ -41,6 +41,7 @@ export default class Game { //game class hold all other class
                     zombieInstance.zombieMove(this.player.positionX, this.player.positionY);
                     //detect if there's a collision between player and current zombie
                     //zombies.forEach
+                   
                     this.detectCollision(zombieInstance);
                     
                     this.bulletHit(zombieInstance);
@@ -137,8 +138,11 @@ export default class Game { //game class hold all other class
         ) {
             this.mark++;
             
-            zombieInstance.domElement.remove();
-            this.zombies.shift();
+            setTimeout(() => {
+                zombieInstance.domElement.remove();
+                this.zombies.shift();
+            }, 100)
+            
         } else {
             zombieInstance.domElement;
             this.zombies;
