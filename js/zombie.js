@@ -8,6 +8,7 @@ export default class Zombie {
         //hold reference of each element
         this.domElement = null; 
         this.createDomElement();
+        this.speed = 0.4;
     }
 
     createDomElement() { 
@@ -55,6 +56,22 @@ export default class Zombie {
         }
     }
 
+    zombieMove(playerPositionX, playerPositionY) {
+        if (this.positionY >= playerPositionY && this.positionX >= playerPositionX) {
+            this.moveDown();
+            this.moveLeft();
+        } else if (this.positionY <= playerPositionY && this.positionX >= playerPositionX){
+            this.moveUp();
+            this.moveLeft();
+        } else if (this.positionX <= playerPositionX && this.positionY >= playerPositionY) {
+            this.moveRight();
+            this.moveDown();
+        } else if (this.positionX <= playerPositionX && this.positionY <= playerPositionY) {
+            this.moveRight();
+            this.moveUp();
+        }
+    }
+    /* maybe in different level
     randomMove () {
         const movement = this.randomNum();
         switch (movement) {
@@ -72,27 +89,27 @@ export default class Zombie {
                 break;
         }
     }
-    
+    */
 
     moveDown() {
         //remove this after set detect 
         //if (this.positionY > (0-this.height)){
-        this.positionY -= 1; //update the info of positionY
+        this.positionY -= this.speed; //update the info of positionY
         this.domElement.style.bottom = this.positionY + "vh"; //reflect the changes
     }
 
     moveUp() {
-        this.positionY += 1; 
+        this.positionY += this.speed; 
         this.domElement.style.bottom = this.positionY + "vh"; 
     }
 
     moveLeft() {
-        this.positionX -= 1; 
+        this.positionX -= this.speed; 
         this.domElement.style.left = this.positionX + "vw"; 
     }
 
     moveRight() {
-        this.positionX += 1; 
+        this.positionX += this.speed; 
         this.domElement.style.left = this.positionX + "vw"; 
     }
 

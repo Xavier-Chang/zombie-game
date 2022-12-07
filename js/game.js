@@ -38,7 +38,7 @@ export default class Game { //game class hold all other class
             setInterval(() => {
                 this.zombies.forEach((zombieInstance) => {
                     //move current zombie
-                    zombieInstance.randomMove();
+                    zombieInstance.zombieMove(this.player.positionX, this.player.positionY);
                     //detect if there's a collision between player and current zombie
                     //zombies.forEach
                     this.detectCollision(zombieInstance);
