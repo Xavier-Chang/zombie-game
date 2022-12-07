@@ -22,13 +22,27 @@ export default class Game { //game class hold all other class
     start(){ //too long, need to break down
 
         this.player = new Player();
-        this.backgorundMusic();
+        
         //How to create more zombies? --> interval 1000ms
 //Where to store them?
-        setInterval(() => {
-            const newzombie = new Zombie();
-            this.zombies.push(newzombie);
-        }, 2500)
+        if (this.mark < 10) {
+            setInterval(() => {
+                const newzombie = new Zombie();
+                this.zombies.push(newzombie);
+            }, 2500)
+        } else if (this.mark <20){
+            setInterval(() => {
+                const newzombie = new Zombie();
+                this.zombies.push(newzombie);
+            }, 1500)
+        } else if (this.mark >=20) {
+            setInterval(() => {
+                const newzombie = new Zombie();
+                this.zombies.push(newzombie);
+            }, 500)
+        }
+        
+        
         
         //Update zombies
         //bonus: start after 3s
@@ -36,6 +50,7 @@ export default class Game { //game class hold all other class
         this.bullet.shootUp();
 
         setTimeout(()=>{
+            this.backgorundMusic();
             setInterval(() => {
                 console.log(this.zombies);
                 this.zombies.forEach((zombieInstance, zombieIndex) => {
@@ -168,7 +183,7 @@ export default class Game { //game class hold all other class
     }
 
     backgorundMusic() {
-        const sound = new Audio("../src/audio/background.mp3")
+        const sound = new Audio("../src/audio/background.mp4")
         sound.play();
     }
 }

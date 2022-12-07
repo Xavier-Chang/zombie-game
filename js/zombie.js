@@ -1,6 +1,6 @@
 export default class Zombie {
     constructor() {
-        this.width = 12;
+        this.width = 3;
         this.height = 18;
         
         this.randomPosition();
@@ -9,6 +9,12 @@ export default class Zombie {
         this.domElement = null; 
         this.createDomElement();
         this.speed = 0.4;
+        setTimeout(()=>{
+            this.speed = 0.7;
+        },5000)
+        setTimeout(()=>{
+            this.speed = 1;
+        },8000)
     }
 
     createDomElement() { 
