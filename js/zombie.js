@@ -2,8 +2,8 @@ export default class Zombie {
     constructor() {
         this.width = 20;
         this.height = 10;
-        this.positionX = (this.randomPosition(this.width, 100) - (this.width));
-        this.positionY = (this.randomPosition(this.height, 100) - (this.height * 0.5))
+        
+        this.randomPosition();
         //put it above the method or constructor will excute firstly and no domElement.
         //hold reference of each element
         this.domElement = null; 
@@ -25,23 +25,49 @@ export default class Zombie {
         boardElm.appendChild(this.domElement);
     }
     //Generate random number between two numbers
-    randomPosition (min, max) { // min and max included 
+    randomRange (min, max) { // min and max included 
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
 
-    randomMove () {
-        const movement = Math.floor(Math.random() * 5);
-        switch (movement) {
+    randomNum () {
+        return Math.floor(Math.random() * 4)
+    }
+
+    randomPosition () {
+        const position = this.randomNum ();
+        switch (position) {
+            case 0:
+                this.positionX = (this.randomRange(this.width, 100) - (this.width));
+                this.positionY = 0;
+                break;
             case 1:
-                this.moveUp();
+                this.positionX = (this.randomRange(this.width, 100) - (this.width));
+                this.positionY = 100;
                 break;
             case 2:
-                this.moveDown();
+                this.positionX = 0;
+                this.positionY = (this.randomRange(this.height, 90) - (this.height));
                 break;
             case 3:
+                this.positionX = 100 - this.width;
+                this.positionY = (this.randomRange(this.height, 90) - (this.height));
+                break;
+        }
+    }
+
+    randomMove () {
+        const movement = this.randomNum();
+        switch (movement) {
+            case 0:
+                this.moveUp();
+                break;
+            case 1:
+                this.moveDown();
+                break;
+            case 2:
                 this.moveLeft();
                 break;
-            case 4:
+            case 3:
                 this.moveRight();
                 break;
         }
@@ -51,22 +77,22 @@ export default class Zombie {
     moveDown() {
         //remove this after set detect 
         //if (this.positionY > (0-this.height)){
-        this.positionY -= 0.5; //update the info of positionY
+        this.positionY -= 1; //update the info of positionY
         this.domElement.style.bottom = this.positionY + "vh"; //reflect the changes
     }
 
     moveUp() {
-        this.positionY += 0.5; 
+        this.positionY += 1; 
         this.domElement.style.bottom = this.positionY + "vh"; 
     }
 
     moveLeft() {
-        this.positionX -= 0.5; 
+        this.positionX -= 1; 
         this.domElement.style.left = this.positionX + "vw"; 
     }
 
     moveRight() {
-        this.positionX += 0.5; 
+        this.positionX += 1; 
         this.domElement.style.left = this.positionX + "vw"; 
     }
 

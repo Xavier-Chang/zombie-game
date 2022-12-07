@@ -147,7 +147,8 @@ export default class Game { //game class hold all other class
     }
 
     removezombieIfOutside(zombieInstance){ //adjust all the screen
-        if(zombieInstance.positionY <= 0 - zombieInstance.height){
+        if(zombieInstance.positionY <= 0 - zombieInstance.height || zombieInstance.positionY >= 100 + zombieInstance.height ||
+            zombieInstance.positionX <= 0 - zombieInstance.width || zombieInstance.positionX >= 100 + zombieInstance.width){
             
             zombieInstance.domElement.remove();
             this.zombies.shift();
