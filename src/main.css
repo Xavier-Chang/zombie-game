@@ -40,7 +40,12 @@ body {
 
 .bullet {
     position: absolute;
-    background-color: orange;
+    background-color: transparent;
+    background-image: url("./img/bullet.png");
+    background-size: 40%;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    
 }
 
 #page-gameover {

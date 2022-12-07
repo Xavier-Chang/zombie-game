@@ -1,7 +1,7 @@
 export default class Bullet {
-    constructor(positionX, positionY, widthOfPlayer, heightOfPlayer) {
-        this.width = 2;
-        this.height = 6;
+    constructor(positionX, positionY, widthOfPlayer) {
+        this.width = 3;
+        this.height = 10;
         this.widthOfPlayer = widthOfPlayer;
         this.positionX = positionX + this.widthOfPlayer/2;
         this.positionY = positionY;
