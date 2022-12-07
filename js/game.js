@@ -130,10 +130,10 @@ export default class Game { //game class hold all other class
     bulletHit(zombieInstance){
         //let mark = 0;
         if (
-            this.bullet.positionX < zombieInstance.positionX + zombieInstance.width &&
-            this.bullet.positionX + this.bullet.width > zombieInstance.positionX &&
-            this.bullet.positionY < zombieInstance.positionY + zombieInstance.height &&
-            this.bullet.height + this.bullet.positionY > zombieInstance.positionY
+            this.bullet.positionX <= zombieInstance.positionX + zombieInstance.width &&
+            this.bullet.positionX + this.bullet.width >= zombieInstance.positionX &&
+            this.bullet.positionY <= zombieInstance.positionY + zombieInstance.height &&
+            this.bullet.height + this.bullet.positionY >= zombieInstance.positionY
         ) {
             this.mark++;
             

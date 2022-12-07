@@ -7,6 +7,7 @@ body {
 body {
     margin: 0;
     padding: 0;
+    background-color: transparent;
 }
 
 #board {
@@ -22,8 +23,14 @@ body {
 /*just set the color*/
 /*set position here as JS no need to get info. from here*/
 #player {
-    background-color: blue;
+    
     position: absolute;
+    background-image: url("./img/player_2.png");
+    background-color: transparent;
+    background-size: cover;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
 }
 
 .zombie {
