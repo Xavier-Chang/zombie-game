@@ -2,7 +2,7 @@ export default class Player {
     constructor(){
         
         //use width and height as number, for calculation
-        this.width = 5 ; //size should set here but not css, otherwise js need to get info from css
+        this.width = 8 ; //size should set here but not css, otherwise js need to get info from css
         this.height = 12;
         this.positionX = 50 - (this.width * 0.5); //centerposition
         this.positionY = 50;
@@ -74,7 +74,7 @@ export default class Player {
     }
 
     rotateToLeft() {
-        this.domElement.style.transform = "rotate(270deg)";
+        this.domElement.style.transform = "rotate(90deg) scaleY(-1)";
     }
 
     rotateToBack() {
