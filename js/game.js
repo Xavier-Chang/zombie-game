@@ -141,7 +141,7 @@ export default class Game { //game class hold all other class
             setTimeout(() => {
                 zombieInstance.domElement.remove();
                 this.zombies.shift();
-            }, 100)
+            }, 50)
             
         } else {
             zombieInstance.domElement;

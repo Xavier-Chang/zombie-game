@@ -11,7 +11,10 @@ body {
 }
 
 #board {
-    background-color: pink;
+    background-image: url("./img/field.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.9;
     position: relative;
     height: 100vh; /*(100% of the height of screen, 100% is the height of content--not responsive)*/
     /*it's ok for short term, but long term too many obstacles, some troubles happen*/
@@ -71,17 +74,20 @@ body {
 .scoreBoard{
         display: flex;
         position: absolute;
-        width: 8vw;
-        height: 7avw;
-        background-color: rgb(160, 229, 160);
-        opacity: 0.5;
-        top: 10vh;
+        width: 15vw;
+        height: 30vh;
+        background-image: url("./img/score_board.png");
+        background-color: transparent;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        opacity: 0.8;
+        top: 8vh;
         left: 3vw;
     }
 
     span {
         text-align: center;
         font-size: 15vh;
-        margin: 0 auto;
-        color: red;
+        margin: 4vh auto;
+        color:white;
     }
