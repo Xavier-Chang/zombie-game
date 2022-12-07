@@ -1,0 +1,72 @@
+/*for testing*/
+/*
+body {
+    background-color: skyblue;
+}
+*/
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#board {
+    background-color: pink;
+    position: relative;
+    height: 100vh; /*(100% of the height of screen, 100% is the height of content--not responsive)*/
+    /*it's ok for short term, but long term too many obstacles, some troubles happen*/
+    /*set remove() firstly*/
+    overflow: hidden; 
+    display: flex;
+}
+
+/*just set the color*/
+/*set position here as JS no need to get info. from here*/
+#player {
+    background-color: blue;
+    position: absolute;
+}
+
+.obstacle {
+    position: absolute;
+    background-color: yellow;
+}
+
+.bullet {
+    position: absolute;
+    background-color: orange;
+}
+
+#page-gameover {
+    background-color: green;   
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 10vw;
+    }
+
+    a {
+       position: relative;
+       left: 40vw;
+       color: red; 
+       text-align: center;
+       font-size: 4vw;
+    }
+
+.scoreBoard{
+        display: flex;
+        position: absolute;
+        width: 8vw;
+        height: 7avw;
+        background-color: rgb(160, 229, 160);
+        opacity: 0.5;
+        top: 10vh;
+        left: 3vw;
+    }
+
+    span {
+        text-align: center;
+        font-size: 15vh;
+        margin: 0 auto;
+        color: red;
+    }
