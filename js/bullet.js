@@ -75,4 +75,9 @@ export default class Bullet {
             this.moveLeft();
         }, 60);}   
     }
+
+    bulletSound() {
+        const sound = new Audio("../src/audio/gun.mp4")
+        sound.play();
+    }
 }

@@ -17,11 +17,12 @@ export default class Game { //game class hold all other class
         this.front = true;
         this.back;
         
+        
     }
     start(){ //too long, need to break down
 
         this.player = new Player();
-        
+        this.backgorundMusic();
         //How to create more zombies? --> interval 1000ms
 //Where to store them?
         setInterval(() => {
@@ -36,7 +37,8 @@ export default class Game { //game class hold all other class
 
         setTimeout(()=>{
             setInterval(() => {
-                this.zombies.forEach((zombieInstance) => {
+                console.log(this.zombies);
+                this.zombies.forEach((zombieInstance, zombieIndex) => {
                     //move current zombie
                     zombieInstance.zombieMove(this.player.positionX, this.player.positionY);
                     //detect if there's a collision between player and current zombie
@@ -44,7 +46,7 @@ export default class Game { //game class hold all other class
                    
                     this.detectCollision(zombieInstance);
                     
-                    this.bulletHit(zombieInstance);
+                    this.bulletHit(zombieInstance, zombieIndex);
                     //check if we nned to remove current zombie
                     this.removezombieIfOutside(zombieInstance);                   
                 });
@@ -73,6 +75,7 @@ export default class Game { //game class hold all other class
                 this.player.moveDown();
             } else if (e.code === "Space") {
                 this.bullet = new Bullet(this.player.positionX, this.player.positionY, this.player.width, this.player.height);
+                this.bullet.bulletSound();
                 if (this.front){
                     this.bullet.shootUp(); 
                 } else if (this.right) {
@@ -128,7 +131,7 @@ export default class Game { //game class hold all other class
         }
     }
 
-    bulletHit(zombieInstance){
+    bulletHit(zombieInstance, zombieIndex){
         //let mark = 0;
         if (
             this.bullet.positionX <= zombieInstance.positionX + zombieInstance.width &&
@@ -138,10 +141,10 @@ export default class Game { //game class hold all other class
         ) {
             this.mark++;
             
-            setTimeout(() => {
-                zombieInstance.domElement.remove();
-                this.zombies.shift();
-            }, 50)
+           
+            zombieInstance.domElement.remove();
+            this.zombies.splice(zombieIndex, 1);
+            
             
         } else {
             zombieInstance.domElement;
@@ -162,6 +165,11 @@ export default class Game { //game class hold all other class
     showScore(mark) {
         const score = document.querySelector(".scoreBoard span");
         score.innerHTML = mark;     
+    }
+
+    backgorundMusic() {
+        const sound = new Audio("../src/audio/background.mp3")
+        sound.play();
     }
 }
 
