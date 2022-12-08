@@ -177,7 +177,7 @@ export default class Game {
     }
 
     backgorundMusic() {
-        const sound = new Audio("../src/audio/background.mp4")
+        const sound = new Audio("https://github.com/Xavier-Chang/zombie-game/raw/main/src/audio/background.mp4")
         sound.volume = 0.05;
         sound.loop = true;
         sound.play();
@@ -189,13 +189,13 @@ export default class Game {
     }
 
     zombieSound() {
-        const sound = new Audio("../src/audio/zombieSound.mp4")
+        const sound = new Audio("https://github.com/Xavier-Chang/zombie-game/raw/main/src/audio/zombieSound.mp4")
         sound.volume = 0.1;
         sound.play();
     }
 
     deadSound() {
-        const sound = new Audio("../src/audio/scream.mp4")
+        const sound = new Audio("https://github.com/Xavier-Chang/zombie-game/raw/main/src/audio/scream.mp4")
         sound.volume = 0.3;
         sound.play();
     }

@@ -26,25 +26,25 @@ function ranking(mark) {
 }
 
 function gameoverSound1() {
-    const sound = new Audio("../src/audio/level1.mp4")
+    const sound = new Audio("https://github.com/Xavier-Chang/zombie-game/raw/main/src/audio/level1.mp4")
     sound.volume = 0.3;
     sound.play();
 }
 
 function gameoverSound2() {
-    const sound = new Audio("../src/audio/level2.mp4")
+    const sound = new Audio("https://github.com/Xavier-Chang/zombie-game/raw/main/src/audio/level2.mp4")
     sound.volume = 0.3;
     sound.play();
 }
 
 function gameoverSound3() {
-    const sound = new Audio("../src/audio/level3.mp4")
+    const sound = new Audio("https://github.com/Xavier-Chang/zombie-game/raw/main/src/audio/level3.mp4")
     sound.volume = 0.3;
     sound.play();
 }
 
 function gameoverSound4() {
-    const sound = new Audio("../src/audio/level4.mp4")
+    const sound = new Audio("https://github.com/Xavier-Chang/zombie-game/raw/main/src/audio/level4.mp4")
     sound.volume = 0.3;
     sound.play();
 }
