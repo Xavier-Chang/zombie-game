@@ -7,7 +7,8 @@ export default class Player {
         this.positionX = 50 - (this.width * 0.5); //centerposition
         this.positionY = 50;
         this.speed = 3;
-        this.domElement = null; //put it above the method or constructor will excute firstly and no domElement.
+        this.domElement = null; 
+        
         this.createDomElement();
         //all method can access the domelement
     }
@@ -26,6 +27,7 @@ export default class Player {
         this.domElement.style.height = this.height + "vh"; //view heigh
         this.domElement.style.bottom = this.positionY + "vh";
         this.domElement.style.left = this.positionX + "vw";
+        this.domElement.style.transform = "rotate(90deg)";
 
         //step3: append to the dom: `parentElm.appendChild()`
         const boardElm = document.getElementById("board");

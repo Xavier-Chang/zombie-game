@@ -44,6 +44,16 @@ body {
     overflow: hidden;
 }
 
+.fatZombie {
+    position: absolute;
+    background-color: transparent;
+    background-image: url("./img/zombie_2.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+
 .bullet {
     position: absolute;
     background-color: transparent;

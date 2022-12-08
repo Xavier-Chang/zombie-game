@@ -1,6 +1,7 @@
 import Player from "./player.js";
 import Zombie from "./zombie.js";
 import Bullet from "./bullet.js";
+import fatZombie from "./fatZombie.js";
 
 export default class Game { //game class hold all other class
     constructor(){
@@ -12,9 +13,9 @@ export default class Game { //game class hold all other class
         this.zombies = [];
         this.bullet;
         this.mark = 0;
-        this.right;
+        this.right = true;
         this.left;
-        this.front = true;
+        this.front;
         this.back;
         this.hit = 0;
         
@@ -31,16 +32,23 @@ export default class Game { //game class hold all other class
 
         setTimeout(() => {
             setInterval(() => {
-                const newzombie = new Zombie();
+                const newzombie = new fatZombie();
                 this.zombies.push(newzombie);
             }, 5000)
-        }, 15500)
+        }, 7500)
 
         setTimeout(() => {
             setInterval(() => {
                 const newzombie = new Zombie();
                 this.zombies.push(newzombie);
             }, 8000)
+        }, 15500)
+
+        setTimeout(() => {
+            setInterval(() => {
+                const newzombie = new fatZombie();
+                this.zombies.push(newzombie);
+            }, 10000)
         }, 25500)
 
         this.bullet = new Bullet(this.player.positionX, 100, 0, 0);
@@ -140,16 +148,16 @@ export default class Game { //game class hold all other class
                 this.hit ++;
             }, 500)
             
-
-            /*setTimeout(()=>{
+            /*
+            setTimeout(()=>{
                 if (this.hit === 1){
                     this.deadSound();
                     setTimeout(() =>{
                         location.href = "gameover.html"
                     },2000)
                 }                 
-            },500)*/
-            
+            },500)
+            */
         }
     }
 
@@ -191,7 +199,7 @@ export default class Game { //game class hold all other class
 
     backgorundMusic() {
         const sound = new Audio("../src/audio/background.mp4")
-        sound.volume = 0.03;
+        sound.volume = 0.05;
         sound.loop = true;
         sound.play();
     }
@@ -203,7 +211,7 @@ export default class Game { //game class hold all other class
 
     zombieSound() {
         const sound = new Audio("../src/audio/zombieSound.mp4")
-        sound.volume = 0.3;
+        sound.volume = 0.1;
         sound.play();
     }
 
