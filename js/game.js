@@ -177,7 +177,7 @@ export default class Game {
     }
 
     backgorundMusic() {
-        const sound = new Audio("../src/audio/background.mp4")
+        const sound = new Audio("https://github.com/Xavier-Chang/zombie-game/blob/main/src/audio/background.mp4")
         sound.volume = 0.05;
         sound.loop = true;
         sound.play();
