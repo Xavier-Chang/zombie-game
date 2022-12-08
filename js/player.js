@@ -6,7 +6,7 @@ export default class Player {
         this.height = 12;
         this.positionX = 50 - (this.width * 0.5); //centerposition
         this.positionY = 50;
-       
+        this.speed = 3;
         this.domElement = null; //put it above the method or constructor will excute firstly and no domElement.
         this.createDomElement();
         //all method can access the domelement
@@ -35,7 +35,7 @@ export default class Player {
 
     moveLeft(){
         if (this.positionX>0) {
-            this.positionX -= 2; //update value, no need to return     
+            this.positionX -= this.speed; //update value, no need to return     
             //update css for the player dom element   
             this.domElement.style.left = this.positionX + "vw";    
         }
@@ -44,7 +44,7 @@ export default class Player {
 
     moveRight(){
         if (this.positionX<(100-this.width)) {
-            this.positionX += 2;
+            this.positionX += this.speed;
             this.domElement.style.left = this.positionX + "vw";
         }
         //console.log(`new position...${this.positionX}`);
@@ -53,14 +53,14 @@ export default class Player {
     
     moveUp() {
         if (this.positionY<100) {
-            this.positionY += 3;
+            this.positionY += this.speed;
             this.domElement.style.bottom = this.positionY + "vh";
         }
     }
 
     moveDown() {
         if (this.positionY>0) {
-            this.positionY -= 3;
+            this.positionY -= this.speed;
             this.domElement.style.bottom = this.positionY + "vh";
         }
     }

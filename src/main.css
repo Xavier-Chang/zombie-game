@@ -86,8 +86,11 @@ body {
     }
 
     span {
+        font-family: "Londrina Outline";
+        font-weight: bolder;
+        color: white;
         text-align: center;
-        font-size: 13vh;
+        font-size: 11vh;
         margin: 2vh auto;
-        color:white;
+       
     }

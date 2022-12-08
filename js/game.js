@@ -16,15 +16,13 @@ export default class Game { //game class hold all other class
         this.left;
         this.front = true;
         this.back;
-        
+        this.hit = 0;
         
     }
-    start(){ //too long, need to break down
 
+    start(){
         this.player = new Player();
-        
-        //How to create more zombies? --> interval 1000ms
-//Where to store them?
+
         if (this.mark < 10) {
             setInterval(() => {
                 const newzombie = new Zombie();
@@ -41,18 +39,20 @@ export default class Game { //game class hold all other class
                 this.zombies.push(newzombie);
             }, 500)
         }
-        
-        
-        
-        //Update zombies
-        //bonus: start after 3s
+
         this.bullet = new Bullet(this.player.positionX, 100, 0, 0);
         this.bullet.shootUp();
 
         setTimeout(()=>{
             this.backgorundMusic();
+            this.zombieSound();
+
             setInterval(() => {
-                console.log(this.zombies);
+                this.zombieSound();
+            }, 7000+this.randomSec())
+
+            setInterval(() => {
+                
                 this.zombies.forEach((zombieInstance, zombieIndex) => {
                     //move current zombie
                     zombieInstance.zombieMove(this.player.positionX, this.player.positionY);
@@ -68,9 +68,6 @@ export default class Game { //game class hold all other class
                 //don't detect outside the loop as just one time collision is ok               
             }, 100);
         },2000)
-
-        
-        
     }
 
     attachEventListeners() {
@@ -135,13 +132,20 @@ export default class Game { //game class hold all other class
             this.player.positionX + this.player.width > zombieInstance.positionX &&
             this.player.positionY < zombieInstance.positionY + zombieInstance.height &&
             this.player.height + this.player.positionY > zombieInstance.positionY
-        ){
-            console.log('collision detected!') //we don't expect player open console
-            //alert('gameover'); //need to refresh
+        ){            
+            setTimeout(()=>{
+                this.hit ++;
+            }, 1000)
             
-            /*setTimeout(()=>{
-                location.href = "gameover.html"//redirect to another page
-            },300)*/
+
+            setTimeout(()=>{
+                if (this.hit === 1){
+                    this.deadSound();
+                    setTimeout(() =>{
+                        location.href = "gameover.html"
+                    },2000)
+                }                 
+            },500)
             
         }
     }
@@ -155,12 +159,8 @@ export default class Game { //game class hold all other class
             this.bullet.height + this.bullet.positionY >= zombieInstance.positionY
         ) {
             this.mark++;
-            
-           
             zombieInstance.domElement.remove();
-            this.zombies.splice(zombieIndex, 1);
-            
-            
+            this.zombies.splice(zombieIndex, 1);            
         } else {
             zombieInstance.domElement;
             this.zombies;
@@ -184,6 +184,25 @@ export default class Game { //game class hold all other class
 
     backgorundMusic() {
         const sound = new Audio("../src/audio/background.mp4")
+        sound.volume = 0.03;
+        sound.loop = true;
+        sound.play();
+    }
+
+    randomSec() {
+        const delay = Math.floor(Math.random() * 5000);
+        return delay;
+    }
+
+    zombieSound() {
+        const sound = new Audio("../src/audio/zombieSound.mp4")
+        sound.volume = 0.3;
+        sound.play();
+    }
+
+    deadSound() {
+        const sound = new Audio("../src/audio/scream.mp4")
+        sound.volume = 0.3;
         sound.play();
     }
 }

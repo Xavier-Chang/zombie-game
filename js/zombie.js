@@ -118,5 +118,4 @@ export default class Zombie {
         this.positionX += this.speed; 
         this.domElement.style.left = this.positionX + "vw"; 
     }
-
 }

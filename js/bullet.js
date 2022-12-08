@@ -78,6 +78,7 @@ export default class Bullet {
 
     bulletSound() {
         const sound = new Audio("../src/audio/gun.mp4")
+        sound.volume = 0.05;
         sound.play();
     }
 }
