@@ -19,8 +19,6 @@ function ranking(mark) {
     } else if (mark > 79) {
         rank.innerHTML = `Oh my Goodness!!! You're really a Zombie Master!!`;
     }
-
-    
 }
 
 score(mark);

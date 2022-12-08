@@ -9,15 +9,11 @@ body {
     background-size: cover;
     opacity: 0.9;
     position: relative;
-    height: 100vh; /*(100% of the height of screen, 100% is the height of content--not responsive)*/
-    /*it's ok for short term, but long term too many obstacles, some troubles happen*/
-    /*set remove() firstly*/
+    height: 100vh;
     overflow: hidden; 
     display: flex;
 }
 
-/*just set the color*/
-/*set position here as JS no need to get info. from here*/
 #player {
     
     position: absolute;
@@ -54,7 +50,6 @@ body {
     background-size: 40%;
     background-repeat: no-repeat;
     overflow: hidden;
-    
 }
 
 #page-gameover {
@@ -95,5 +90,4 @@ body {
         text-align: center;
         font-size: 11vh;
         margin: 2vh auto;
-       
     }

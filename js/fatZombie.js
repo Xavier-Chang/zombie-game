@@ -2,10 +2,7 @@ export default class fatZombie {
     constructor() {
         this.width = 5;
         this.height = 18;
-        
         this.randomPosition();
-        //put it above the method or constructor will excute firstly and no domElement.
-        //hold reference of each element
         this.domElement = null; 
         this.createDomElement();
         this.speed = 0.15;
@@ -21,18 +18,16 @@ export default class fatZombie {
         this.domElement = document.createElement('div');
 
         this.domElement.className = "fatZombie"; 
-        this.domElement.style.width = this.width + "vw"; //view width, need "string"!!
-        this.domElement.style.height = this.height + "vh"; //view heigh
+        this.domElement.style.width = this.width + "vw"; 
+        this.domElement.style.height = this.height + "vh"; 
         this.domElement.style.bottom = this.positionY + "vh";
         this.domElement.style.left = this.positionX + "vw";
-        
-
-        //step3: append to the dom: `parentElm.appendChild()`
+   
         const boardElm = document.getElementById("board");
         boardElm.appendChild(this.domElement);
     }
-    //Generate random number between two numbers
-    randomRange (min, max) { // min and max included 
+    
+    randomRange (min, max) { 
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
 
@@ -77,31 +72,10 @@ export default class fatZombie {
             this.moveUp();
         }
     }
-    /* maybe in different level
-    randomMove () {
-        const movement = this.randomNum();
-        switch (movement) {
-            case 0:
-                this.moveUp();
-                break;
-            case 1:
-                this.moveDown();
-                break;
-            case 2:
-                this.moveLeft();
-                break;
-            case 3:
-                this.moveRight();
-                break;
-        }
-    }
-    */
 
     moveDown() {
-        //remove this after set detect 
-        //if (this.positionY > (0-this.height)){
-        this.positionY -= this.speed; //update the info of positionY
-        this.domElement.style.bottom = this.positionY + "vh"; //reflect the changes
+        this.positionY -= this.speed; 
+        this.domElement.style.bottom = this.positionY + "vh"; 
     }
 
     moveUp() {

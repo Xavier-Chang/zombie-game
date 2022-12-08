@@ -5,21 +5,17 @@ export default class Bullet {
         this.widthOfPlayer = widthOfPlayer;
         this.positionX = positionX + this.widthOfPlayer/2;
         this.positionY = positionY;
-        //put it above the method or constructor will excute firstly and no domElement.
-        //hold reference of each element
         this.domElement = null; 
         this.createDomElement();
     }
 
     createDomElement() { 
         this.domElement = document.createElement('div');
-        this.domElement.className = "bullet"; //there're lots of zombies, use class but not id
-        this.domElement.style.width = this.width + "vw"; //view width, need "string"!!
-        this.domElement.style.height = this.height + "vh"; //view heigh
+        this.domElement.className = "bullet";
+        this.domElement.style.width = this.width + "vw"; 
+        this.domElement.style.height = this.height + "vh"; 
         this.domElement.style.bottom = this.positionY + "vh";
         this.domElement.style.left = this.positionX + "vw";
-
-        //step3: append to the dom: `parentElm.appendChild()`
         const boardElm = document.getElementById("board");
         boardElm.appendChild(this.domElement);
     }
@@ -43,7 +39,6 @@ export default class Bullet {
         this.positionX -=5;
         this.domElement.style.left = this.positionX + "vw";
     }
-
 
     shootUp() {
         if (this.positionY<=100){

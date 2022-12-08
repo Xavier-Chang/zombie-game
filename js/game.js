@@ -3,28 +3,22 @@ import Zombie from "./zombie.js";
 import Bullet from "./bullet.js";
 import fatZombie from "./fatZombie.js";
 
-export default class Game { //game class hold all other class
+export default class Game { 
     constructor(){
-        //this.player;
-        //set an array to keep the new zombies; 
-        //will hold instances of the class zombie;
-        //detect outside the board - remove from the dom and this array, 
-        //shift() - remove the first element: 
         this.zombies = [];
         this.bullet;
         this.mark = 0;
+        //use to distinguish the direction of player
         this.right = true;
         this.left;
         this.front;
         this.back;
-        this.hit = 0;
-        
+        this.hit = 0;  
     }
 
     start(){
         this.player = new Player();
-
-        
+        //Different zombie and more zombies will appear by the time pass. More challenging.
         setInterval(() => {
             const newzombie = new Zombie();
             this.zombies.push(newzombie);
@@ -57,37 +51,23 @@ export default class Game { //game class hold all other class
         setTimeout(()=>{
             this.backgorundMusic();
             this.zombieSound();
-
+            //make the zombie sount at random time
             setInterval(() => {
                 this.zombieSound();
-            }, 7000+this.randomSec())
+            }, 7000 + this.randomSec())
 
             setInterval(() => {
-                
                 this.zombies.forEach((zombieInstance, zombieIndex) => {
-                    //move current zombie
-                    zombieInstance.zombieMove(this.player.positionX, this.player.positionY);
-                    //detect if there's a collision between player and current zombie
-                    //zombies.forEach
-                   
-                    this.detectCollision(zombieInstance);
-                    
-                    this.bulletHit(zombieInstance, zombieIndex);
-                    //check if we nned to remove current zombie
-                    this.removezombieIfOutside(zombieInstance);                   
-                });
-                //don't detect outside the loop as just one time collision is ok               
+                    zombieInstance.zombieMove(this.player.positionX, this.player.positionY);                  
+                    this.detectCollision(zombieInstance);                   
+                    this.bulletHit(zombieInstance, zombieIndex);            
+                });            
             }, 50);
         },2000)
     }
 
     attachEventListeners() {
-        //Attach event listeners
-        document.addEventListener('keydown', (e) => {
-            //const key = e.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
-            //console.log(e.key); //log what keyboard enter
-            
-            
+        document.addEventListener('keydown', (e) => {            
             if (e.key === "d") {
                 this.player.moveRight();
             } else if (e.key === "a") {
@@ -108,7 +88,6 @@ export default class Game { //game class hold all other class
                 } else if (this.back) {
                     this.bullet.shootDown();
                 }             
-                //this.bullet.shootRight();    
             } else if (e.code === "ArrowRight") {       
                 this.player.rotateToRight();
                 this.front = false;
@@ -137,7 +116,7 @@ export default class Game { //game class hold all other class
         });
     }
 
-    detectCollision(zombieInstance) { //dont
+    detectCollision(zombieInstance) {
         if (
             this.player.positionX < zombieInstance.positionX + zombieInstance.width &&
             this.player.positionX + this.player.width > zombieInstance.positionX &&
@@ -163,20 +142,19 @@ export default class Game { //game class hold all other class
     }
 
     bulletHit(zombieInstance, zombieIndex){
-        //let mark = 0;
         if (
             this.bullet.positionX < zombieInstance.positionX + zombieInstance.width &&
             this.bullet.positionX + this.bullet.width > zombieInstance.positionX &&
             this.bullet.positionY < zombieInstance.positionY + zombieInstance.height &&
             this.bullet.height + this.bullet.positionY > zombieInstance.positionY
         ) {
-            if (this.mark < 10) {
+            if (this.mark >= 0 && this.mark < 15) {
                 this.mark ++;
-            } else if (this.mark <15){
+            } else if (this.mark >= 15 && this.mark < 35){
                 this.mark += 2 ;
-            } else if (this.mark <35) {
+            } else if (this.mark >= 35 && this.mark < 50) {
                 this.mark += 3;
-            } else if (this.mark >50) {
+            } else if (this.mark >=50) {
                 this.mark += 4;
             }
             
@@ -184,15 +162,6 @@ export default class Game { //game class hold all other class
             this.zombies.splice(zombieIndex, 1);            
         } 
         this.showScore(this.mark);
-    }
-
-    removezombieIfOutside(zombieInstance){ //adjust all the screen
-        if(zombieInstance.positionY <= 0 - zombieInstance.height || zombieInstance.positionY >= 100 + zombieInstance.height ||
-            zombieInstance.positionX <= 0 - zombieInstance.width || zombieInstance.positionX >= 100 + zombieInstance.width){
-            
-            zombieInstance.domElement.remove();
-            this.zombies.shift();
-        };
     }
 
     showScore(mark) {

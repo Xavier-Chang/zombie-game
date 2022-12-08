@@ -1,35 +1,24 @@
 export default class Player {
     constructor(){
-        
-        //use width and height as number, for calculation
-        this.width = 8 ; //size should set here but not css, otherwise js need to get info from css
+        this.width = 8;
         this.height = 12;
-        this.positionX = 50 - (this.width * 0.5); //centerposition
+        this.positionX = 50 - (this.width * 0.5); 
         this.positionY = 50;
         this.speed = 3;
-        this.domElement = null; 
-        
+        this.domElement = null;        
         this.createDomElement();
-        //all method can access the domelement
     }
 
-    //set player here but not html
     createDomElement() { 
-        // step1: create the element:
-        //However, can't put it inside the method as other method can't access it.
-        //first set it in constructor
         this.domElement = document.createElement('div');
 
-        // step2: add content or modify (ex. innerHTML...)
-            //set size here
         this.domElement.id = "player"; 
-        this.domElement.style.width = this.width + "vw"; //view width, need "string"!!
-        this.domElement.style.height = this.height + "vh"; //view heigh
+        this.domElement.style.width = this.width + "vw";
+        this.domElement.style.height = this.height + "vh"; 
         this.domElement.style.bottom = this.positionY + "vh";
         this.domElement.style.left = this.positionX + "vw";
         this.domElement.style.transform = "rotate(90deg)";
 
-        //step3: append to the dom: `parentElm.appendChild()`
         const boardElm = document.getElementById("board");
         boardElm.appendChild(this.domElement);
     }
@@ -37,11 +26,9 @@ export default class Player {
 
     moveLeft(){
         if (this.positionX>0) {
-            this.positionX -= this.speed; //update value, no need to return     
-            //update css for the player dom element   
+            this.positionX -= this.speed;   
             this.domElement.style.left = this.positionX + "vw";    
         }
-        //console.log(`new position...${this.positionX}`);
     }
 
     moveRight(){
