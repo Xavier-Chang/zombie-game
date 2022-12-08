@@ -28,22 +28,29 @@ export default class Game {
             setInterval(() => {
                 const newzombie = new fatZombie();
                 this.zombies.push(newzombie);
-            }, 5000)
+            }, 4000)
         }, 7500)
 
         setTimeout(() => {
             setInterval(() => {
                 const newzombie = new Zombie();
                 this.zombies.push(newzombie);
-            }, 8000)
+            }, 7000)
         }, 15500)
 
         setTimeout(() => {
             setInterval(() => {
                 const newzombie = new fatZombie();
                 this.zombies.push(newzombie);
-            }, 10000)
+            }, 9000)
         }, 25500)
+
+        setTimeout(() => {
+            setInterval(() => {
+                const newzombie = new Zombie();
+                this.zombies.push(newzombie);
+            }, 5000)
+        }, 40500)
 
         this.bullet = new Bullet(this.player.positionX, 100, 0, 0);
         this.bullet.shootUp();

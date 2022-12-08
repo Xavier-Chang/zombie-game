@@ -5,12 +5,12 @@ export default class Zombie {
         this.randomPosition();
         this.domElement = null; 
         this.createDomElement();
-        this.speed = 0.2;
+        this.speed = 0.4;
         setTimeout(()=>{
-            this.speed = 0.4;
+            this.speed = 0.6;
         },5000)
         setTimeout(()=>{
-            this.speed = 0.7;
+            this.speed = 1;
         },8000)
     }
 

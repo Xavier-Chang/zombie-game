@@ -17,27 +17,34 @@ h1 {
     font-style: oblique;
     text-align: center;
     background-color: rgb(142, 8, 8);    
-    margin-top: 5vh;
+    margin-top: 2vh;
     margin-bottom: 5vh;
 }
 
+
 .container {
     display: flex;
-    flex-direction: column;
-    background-color: rgb(252, 144, 13); 
+    flex-direction: column; 
     width: 45vw;
-    margin-left: 3vw;
+    margin-left: 3 vw;
     padding: 2vh;
     border-radius: 5vh;
 }
 
 h2 {
     font-family: "Alexandria";
+    background-color: black;
     color: white;
     font-size: 2vw;
     text-align: left;
-    margin: 0 auto;
-    width: 40vw;
+    margin: 10vh auto;
+    width: 35vw;
+    padding: 2vh;
+}
+
+h2:hover {
+    color: black;
+    background-color: white;
 }
 
 .instruction_container {
@@ -45,21 +52,24 @@ h2 {
     display: flex;
     right: 3vw;
     background-color: white;
-    bottom: 28vh;
-    width: 40vw;
-    height: 40vh;
+    bottom: 20vh;
+    width: 50vw;
+    height: 50vh;
+    flex-direction: row;
 }
 
-h3{
-    font-family: "Lato";
-    margin: 0 auto;
-    font-size: 4vh;
+.instruction_container:hover{
+    background-color: black;
+    color: white;
 }
 
 a {
     display: flex;
+    position: absolute;
     text-align: center;
-    margin: 5vh auto;
+    bottom: 3vh;
+    left: 36vw;
+    justify-content: end;
     text-decoration: none;
     color: red;
     background-color: black;
@@ -71,4 +81,32 @@ a {
 a:hover {
     color: black;
     background-color: red;
+}
+
+img {
+    height: 16vh;
+}
+
+.sections {
+    display: flex;
+    flex-direction: column;
+    margin: 2vh 2vw;
+    justify-content:flex-start;
+}
+
+p {
+    text-align: center;
+}
+
+#spaceBar{
+    width: 8vw;
+    height: 7vh;
+    margin: 0 auto;
+}
+
+#gun {
+    color: rgb(194, 194, 42);
+    font-size: 3vh;
+    font-style: italic;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

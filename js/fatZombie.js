@@ -5,13 +5,13 @@ export default class fatZombie {
         this.randomPosition();
         this.domElement = null; 
         this.createDomElement();
-        this.speed = 0.15;
+        this.speed = 0.3;
         setTimeout(()=>{
-            this.speed = 0.3;
-        },5000)
+            this.speed = 0.4;
+        },4000)
         setTimeout(()=>{
-            this.speed = 0.5;
-        },8000)
+            this.speed = 1.2;
+        },7000)
     }
 
     createDomElement() { 

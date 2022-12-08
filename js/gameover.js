@@ -10,16 +10,16 @@ function score(count) {
 function ranking(mark) {
     const rank = document.querySelector(".rank span");
     rank.id = "rank";
-    if (mark < 20) {
+    if (mark < 25) {
         rank.innerHTML = `Er...You're a Zombie Newbie`;
         gameoverSound1();
-    } else if (mark < 40) {
+    } else if (mark < 50) {
         rank.innerHTML = `Aha! You're a Zombie Killer`;
         gameoverSound2()
-    } else if (mark < 60) {
+    } else if (mark < 75) {
         rank.innerHTML = `Hurray!! You're a Zombie Expert`;
         gameoverSound3() 
-    } else if (mark > 79) {
+    } else if (mark > 99) {
         rank.innerHTML = `Oh my Goodness!!! You're really a Zombie Master!!`;
         gameoverSound4()
     }
