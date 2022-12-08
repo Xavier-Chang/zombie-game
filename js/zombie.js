@@ -8,12 +8,12 @@ export default class Zombie {
         //hold reference of each element
         this.domElement = null; 
         this.createDomElement();
-        this.speed = 0.4;
+        this.speed = 0.2;
         setTimeout(()=>{
-            this.speed = 0.7;
+            this.speed = 0.4;
         },5000)
         setTimeout(()=>{
-            this.speed = 1;
+            this.speed = 0.7;
         },8000)
     }
 

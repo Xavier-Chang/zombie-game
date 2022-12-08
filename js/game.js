@@ -23,22 +23,25 @@ export default class Game { //game class hold all other class
     start(){
         this.player = new Player();
 
-        if (this.mark < 10) {
+        
+        setInterval(() => {
+            const newzombie = new Zombie();
+            this.zombies.push(newzombie);
+        }, 2500)
+
+        setTimeout(() => {
             setInterval(() => {
                 const newzombie = new Zombie();
                 this.zombies.push(newzombie);
-            }, 2500)
-        } else if (this.mark <20){
+            }, 5000)
+        }, 15500)
+
+        setTimeout(() => {
             setInterval(() => {
                 const newzombie = new Zombie();
                 this.zombies.push(newzombie);
-            }, 1500)
-        } else if (this.mark >=20) {
-            setInterval(() => {
-                const newzombie = new Zombie();
-                this.zombies.push(newzombie);
-            }, 500)
-        }
+            }, 8000)
+        }, 25500)
 
         this.bullet = new Bullet(this.player.positionX, 100, 0, 0);
         this.bullet.shootUp();
@@ -66,7 +69,7 @@ export default class Game { //game class hold all other class
                     this.removezombieIfOutside(zombieInstance);                   
                 });
                 //don't detect outside the loop as just one time collision is ok               
-            }, 100);
+            }, 50);
         },2000)
     }
 
@@ -135,17 +138,17 @@ export default class Game { //game class hold all other class
         ){            
             setTimeout(()=>{
                 this.hit ++;
-            }, 1000)
+            }, 500)
             
 
-            setTimeout(()=>{
+            /*setTimeout(()=>{
                 if (this.hit === 1){
                     this.deadSound();
                     setTimeout(() =>{
                         location.href = "gameover.html"
                     },2000)
                 }                 
-            },500)
+            },500)*/
             
         }
     }
@@ -153,18 +156,22 @@ export default class Game { //game class hold all other class
     bulletHit(zombieInstance, zombieIndex){
         //let mark = 0;
         if (
-            this.bullet.positionX <= zombieInstance.positionX + zombieInstance.width &&
-            this.bullet.positionX + this.bullet.width >= zombieInstance.positionX &&
-            this.bullet.positionY <= zombieInstance.positionY + zombieInstance.height &&
-            this.bullet.height + this.bullet.positionY >= zombieInstance.positionY
+            this.bullet.positionX < zombieInstance.positionX + zombieInstance.width &&
+            this.bullet.positionX + this.bullet.width > zombieInstance.positionX &&
+            this.bullet.positionY < zombieInstance.positionY + zombieInstance.height &&
+            this.bullet.height + this.bullet.positionY > zombieInstance.positionY
         ) {
-            this.mark++;
+            if (this.mark < 10) {
+                this.mark ++;
+            } else if (this.mark <20){
+                this.mark += 2 ;
+            } else if (this.mark >=20) {
+                this.mark += 3;
+            }
+            
             zombieInstance.domElement.remove();
             this.zombies.splice(zombieIndex, 1);            
-        } else {
-            zombieInstance.domElement;
-            this.zombies;
-        }
+        } 
         this.showScore(this.mark);
     }
 
