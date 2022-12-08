@@ -146,9 +146,10 @@ export default class Game { //game class hold all other class
         ){            
             setTimeout(()=>{
                 this.hit ++;
+                window.localStorage.setItem('mark', this.mark);
             }, 500)
             
-            /*
+            
             setTimeout(()=>{
                 if (this.hit === 1){
                     this.deadSound();
@@ -157,7 +158,7 @@ export default class Game { //game class hold all other class
                     },2000)
                 }                 
             },500)
-            */
+            
         }
     }
 
@@ -171,10 +172,12 @@ export default class Game { //game class hold all other class
         ) {
             if (this.mark < 10) {
                 this.mark ++;
-            } else if (this.mark <20){
+            } else if (this.mark <15){
                 this.mark += 2 ;
-            } else if (this.mark >=20) {
+            } else if (this.mark <35) {
                 this.mark += 3;
+            } else if (this.mark >50) {
+                this.mark += 4;
             }
             
             zombieInstance.domElement.remove();

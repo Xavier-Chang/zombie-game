@@ -1,13 +1,6 @@
-/*for testing*/
-/*
-body {
-    background-color: skyblue;
-}
-*/
 body {
     margin: 0;
     padding: 0;
-    background-color: transparent;
 }
 
 #board {
